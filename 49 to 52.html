@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="app2.js"></script>
+    <link rel="stylesheet" href="chap52.css">
+</head>
+<body >
+    <!-- Create a signup form and display form data in your web
+    page on submission. -->
+    <h3>Q1:</h3>
+    <h2>Signup Form</h2>
+    <form id="signupForm">
+        <fieldset>
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name" placeholder="UserName" required>
+            <br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" placeholder="username@gmail.com" required>
+            <br><br>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" name="phone" id="phone" placeholder="+92" required>
+            <br><br>
+
+            <input type="submit" value="Submit" id="submit">
+        </fieldset>
+    </form>
+
+    <h2>Submitted Data:</h2>
+    <div id="displayData"></div>
+
+    <script>
+        document.getElementById("signupForm").addEventListener("submit", function(event) {
+    event.preventDefault(); 
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+    var phone = document.getElementById("phone").value;
+    var displayDiv = document.getElementById("displayData");
+    displayDiv.innerHTML = `<p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p><strong>Phone:</strong> ${phone}</p>`;
+    displayDiv.style.fontSize= "30px"
+});
+
+
+    </script>
+
+<!-- 
+2. Suppose in your webpage there is content area in which
+you have entered your item details, but user can only see
+some details on first look. When user clicks on “Read
+more” button, full detail of that particular item will be
+displayed.  -->
+<h3>Q2</h3>
+<h1>Content</h1>
+<div class="content">
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem eaque optio obcaecati, saepe soluta alias similique in recusandae fuga officiis facilis laboriosam animi voluptatum quidem quod architecto reprehenderit quaerat. Blanditiis!</p>
+    <button id="readMoreBtn">Read More</button>
+    <p class="full-details">i reprehenderit vel voluptates maiores impedit ex rem animi nihil labore. Eius magnam cumque ullam minus ipsa inventore eos architecto qui incidunt nam consequuntur rerum necessitatibus ut quos, sunt aperiam ratione repudiandae velit harum ea vitae alias doloremque. Quisquam at ratione aliquam?</p>
+</div>
+
+<script>
+   document.addEventListener("DOMContentLoaded", function() {
+            var button = document.getElementById("readMoreBtn");
+            var fullDetails = document.querySelector(".full-details");
+
+            button.onclick = function() {
+                if (fullDetails.style.display === "none" || fullDetails.style.display === "") {
+                    fullDetails.style.display = "block"; 
+                    button.textContent = "Read Less"; 
+                } else {
+                    fullDetails.style.display = "none";
+                    button.textContent = "Read More"; 
+                }
+            };
+        });
+</script>
+
+
+
+<h2>Student Form</h2>
+<form id="studentForm">
+    <input type="text" id="name" placeholder="Name" required>
+    <input type="text" id="age" placeholder="Age" required>
+    <input type="text" id="grade" placeholder="Grade" required>
+    <button type="submit">Add</button>
+</form>
+<table id="studentTable">
+    <thead>
+        <tr><th>Name</th><th>Age</th><th>Grade</th><th>Actions</th></tr>
+    </thead>
+    <tbody></tbody>
+</table>
+<div id="editForm" class="hidden">
+    <input type="text" id="editName"><input type="text" id="editAge"><input type="text" id="editGrade">
+    <button id="saveButton">Save</button>
+</div>
+<style>
+    table { width: 100%; border-collapse: collapse; }
+    th, td { border: 1px solid black; padding: 10px; }
+    .hidden { display: none; }
+</style>
+<script>
+    document.getElementById("studentForm").onsubmit = function(e) {
+        e.preventDefault();
+        var row = `<tr>
+            <td>${name.value}</td>
+            <td>${age.value}</td>
+            <td>${grade.value}</td>
+            <td>
+                <button onclick="editStudent(this)">Edit</button>
+                <button onclick="deleteStudent(this)">Delete</button>
+            </td>
+        </tr>`;
+        document.querySelector("#studentTable tbody").innerHTML += row;
+        this.reset();
+    }
+
+    function deleteStudent(btn) {
+        btn.closest("tr").remove();
+    }
+
+    function editStudent(btn) {
+        var row = btn.closest("tr");
+        editName.value = row.cells[0].innerText;
+        editAge.value = row.cells[1].innerText;
+        editGrade.value = row.cells[2].innerText;
+        editForm.classList.remove("hidden");
+        saveButton.onclick = () => {
+            row.cells[0].innerText = editName.value;
+            row.cells[1].innerText = editAge.value;
+            row.cells[2].innerText = editGrade.value;
+            editForm.classList.add("hidden");
+        }
+    }
+</script>
+</body>
+</html>

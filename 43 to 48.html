@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 43 to 48</title>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body style="background-color: black;">
+    <h1>Question 1:</h1>
+   <a onclick="clickHere()" href="#">click here</a>
+
+  <h2>Question 2:</h2>
+<div class="images">
+  <img onclick="alertBox()"  src="image1.webp" alt="load.....">
+  <img onclick="alertBox()" src="image2.jpeg" alt="load...">
+  <img onclick="alertBox()" src="image3.jpg" alt="load...">
+  <img onclick="alertBox()" src="image4.webp" alt="load...">
+  </div>
+
+
+  <h2>Question 3:</h2>
+
+
+  <table border="1">
+   
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Action</th>
+    </tr>
+
+<tbody id="tableBody"></tbody>
+</table>
+
+<script>
+let students = [
+    [1, 'Alice', 20],
+    [2, 'Bob', 21],
+    [3, 'Charlie', 22],
+    [4, 'David', 23],
+    [5, 'Eve', 20]
+];
+
+function displayStudents() {
+    const tableBody = document.getElementById('tableBody');
+    tableBody.innerHTML = '';
+    students.forEach((s, i) => {
+        tableBody.innerHTML += `<tr>
+            <td>${s[0]}</td>
+            <td>${s[1]}</td>
+            <td>${s[2]}</td>
+          
+           <td><button onclick="deleteStudent(${i})">Delete</button></td>
+        </tr>`;
+    });
+}
+
+function deleteStudent(index) {
+    students.splice(index, 1);
+    displayStudents();
+}
+
+displayStudents();
+</script>
+
+
+ <h2>Q4</h2>
+ <img src="im1.jpeg" alt="load..." onmouseover="src='im2.avif'" onmouseout="src='im1.jpeg'">
+ <img src="im3.jpg" alt="load..." onmouseover="src='im4.webp'" onmouseout="src='im3.jpg'">
+ <img src="im5.avif" alt="load..." onmouseover="src='im6.jpg'" onmouseout="src='im5.avif'">
+ <img src="im7.jpg" alt="load..." onmouseover="src='im8.jpg'" onmouseout="src='im7.jpg'">
+</body>
+</html>
+
+<h2>Q5</h2>
+<button onclick="increase()" class="inc">Increase</button>
+<div id="cou" ><h1 id="counter" class="count">1</h1></div>
+<button onclick="decrease()" class="inc">Decrease</button>
+

@@ -1,0 +1,44 @@
+body{
+    background-color: rgb(0, 0, 0);
+    color: aliceblue;
+}
+
+fieldset{
+    width: 400px;
+    text-align: center;
+    border-radius: 10px;
+   
+}
+
+#submit{
+    border-radius: 6px;
+    border: 6px solid white;
+}
+
+input{
+    font-size: 15px;
+}
+
+label{
+    font-size: 30px;
+}
+
+form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+h2{
+    color: aliceblue;
+    font-size: 40px;
+    margin-left: 30px; 
+}
+
+
+h3{
+    color: aliceblue;
+    font-size: 60px;
+    margin-left: 30px; 
+}
